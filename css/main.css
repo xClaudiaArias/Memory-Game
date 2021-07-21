@@ -1,3 +1,14 @@
+#container {
+  margin: 0 auto;
+  width: 900px;
+  height: 800px;
+  background-color: orange;
+}
 
+img {
+  width: 200px;
+  height: 400px;
+  object-fit: cover;
+}
 
 /*# sourceMappingURL=main.css.map */

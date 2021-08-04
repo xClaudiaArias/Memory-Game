@@ -1,9 +1,25 @@
 const images = ["one", "two", "three", "four", "five", "six", "seven"];
 const container = $("#container");
 
+// back side image generator 
+
+const generateImages = () => {
+  for (let i = 0; i < 6; i++){
+    container.append(`<div class="card-holder">
+                        <div id="back">
+                          <img class="card" src="./Images/back.jpg">
+                        </div>
+                        <div id="front">
+                        </div>
+                      </div>`)
+  }
+}
+
+generateImages()
 
 // selects 3 random images 
 
+/* 
 let selectedImages = [];
 let num = images.length;
 
@@ -36,6 +52,6 @@ for (let i = 0; i < 6; i++){
 for (let [i, img] of randomizedImages.entries()){
   container.append(`<img id="card-${i + 1}" class="card" src="./Images/${img}.jpg">`)
 }
+ */
 
 
-// TO DO: WORK ON CARD LOGIC 

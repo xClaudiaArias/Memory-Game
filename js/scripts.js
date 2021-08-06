@@ -1,25 +1,27 @@
 const images = ["one", "two", "three", "four", "five", "six", "seven"];
 const container = $("#container");
 
-// back side image generator 
+let level, score, numberOfImages = 0;
 
-const generateImages = () => {
-  for (let i = 0; i < 6; i++){
-    container.append(`<div class="card-holder">
-                        <div id="back">
-                          <img class="card" src="./Images/back.jpg">
-                        </div>
-                        <div id="front">
-                        </div>
-                      </div>`)
-  }
+for (let i = 0; i < 6; i++){
+    let newEl = document.createElement("div")
+    container.append(newEl)
 }
+$( "#container div" ).addClass("card");
 
-generateImages()
+$(".card").each(function(i, e){
 
-// selects 3 random images 
+  let frontDiv = document.createElement("div")
+  let backDiv = document.createElement("div")
 
-/* 
+  frontDiv.classList.add("front-div")
+  backDiv.classList.add("back-div")
+
+  e.append(frontDiv)
+  e.append(backDiv)
+
+})
+
 let selectedImages = [];
 let num = images.length;
 
@@ -36,7 +38,6 @@ for (let i = 0; i < 3; i++){
     num--;
 }
 
-// randomize images
 let randomizedImages = [];
 let lenSelected = selectedImages.length
 
@@ -48,10 +49,10 @@ for (let i = 0; i < 6; i++){
   lenSelected--;
 }
 
-// display random images on screen 
-for (let [i, img] of randomizedImages.entries()){
-  container.append(`<img id="card-${i + 1}" class="card" src="./Images/${img}.jpg">`)
-}
- */
+$(".front-div").each(function(i, e){
+  let newImg = document.createElement('img')
+  newImg.setAttribute("src",`./Images/${randomizedImages[i]}.jpg`)
+  newImg.classList.add("front-img")
 
-
+  e.append(newImg)
+})

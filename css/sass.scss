@@ -5,15 +5,32 @@
     background-color: orange;
 }
 
-.card-holder {
+.card {
     width: 210px;
-    height: 410px;
     background-color: green;
 }
 
-img {
-    width: 200px;
-    height: 400px;
+.front-div {
+    width: 210px;
+    height: 340px;
+    background-color: red;
+    border: solid 1px black;
+}
+
+.back-div {
+    width: 210px;
+    height: 340px;
+    background-color: blue;
+    border: solid 1px white;
+    background-image: url("../Images/back.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.front-img {
+    width: inherit;
+    height: inherit;
     object-fit: cover;
 }
 

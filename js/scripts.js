@@ -53,6 +53,11 @@ $(".front-div").each(function(i, e){
   let newImg = document.createElement('img')
   newImg.setAttribute("src",`./Images/${randomizedImages[i]}.jpg`)
   newImg.classList.add("front-img")
+  newImg.setAttribute("id", `${randomizedImages[i]}`)
 
   e.append(newImg)
 })
+
+
+// -- CARD FLIP 
+

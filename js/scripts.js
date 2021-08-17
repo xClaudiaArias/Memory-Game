@@ -4,10 +4,17 @@ const container = $("#container");
 let level, score, numberOfImages = 0;
 
 for (let i = 0; i < 6; i++){
-    let newEl = document.createElement("div")
-    container.append(newEl)
+
+    // parent element 
+    let cardSpace = document.createElement("div")
+    container.append(cardSpace)
+
+    // child element 
+    let newCard = document.createElement("div")
+    cardSpace.append(newCard)
 }
-$( "#container div" ).addClass("card");
+$( "#container div" ).addClass("card-space");
+$( ".card-space div" ).addClass("card");
 
 $(".card").each(function(i, e){
 
@@ -21,6 +28,13 @@ $(".card").each(function(i, e){
   e.append(backDiv)
 
 })
+
+$(".card").removeClass("card-space");
+
+// add card__side class 
+$(".front-div").addClass("card__side")
+$(".back-div").addClass("card__side")
+
 
 let selectedImages = [];
 let num = images.length;
@@ -60,4 +74,10 @@ $(".front-div").each(function(i, e){
 
 
 // -- CARD FLIP 
+
+$(".card").on('click', function(){
+  $(this).toggleClass("is-flipped");
+})
+
+
 

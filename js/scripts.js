@@ -94,4 +94,11 @@ $(".card").on('click', function(){
 })
 
 
+$(".card").each(function(il, e){
+  console.log(this)
+  console.log(il, e, " il, e")
+  // .. i is index, e is element
+})
+
+
 

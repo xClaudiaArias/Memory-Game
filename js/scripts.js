@@ -18,14 +18,15 @@ $( ".card-space div" ).addClass("card");
 
 $(".card").each(function(i, e){
 
-  let frontDiv = document.createElement("div")
   let backDiv = document.createElement("div")
+  let frontDiv = document.createElement("div")
 
-  frontDiv.classList.add("front-div")
   backDiv.classList.add("back-div")
+  frontDiv.classList.add("front-div")
 
-  e.append(frontDiv)
   e.append(backDiv)
+  e.append(frontDiv)
+
 
 })
 

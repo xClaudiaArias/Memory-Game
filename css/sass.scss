@@ -31,6 +31,7 @@
 .front-div {
     width: inherit;
     height: inherit;
+    transform: rotateY(180deg);
 }
 
 .back-div {
@@ -40,7 +41,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    transform: rotateY(180deg);
 }
 
 .front-img {
@@ -52,5 +52,3 @@
 .is-flipped {
     transform: rotateY(180deg);
 }
-
-

@@ -65,6 +65,7 @@ for (let i = 0; i < 6; i++){
 }
 
 $(".front-div").each(function(i, e){
+
   let newImg = document.createElement('img')
   newImg.setAttribute("src",`./Images/${randomizedImages[i]}.jpg`)
   newImg.classList.add("front-img")
@@ -74,10 +75,22 @@ $(".front-div").each(function(i, e){
 })
 
 
+
 // -- CARD FLIP 
 
 $(".card").on('click', function(){
   $(this).toggleClass("is-flipped");
+
+
+})
+
+// check a loop 
+$(".card").on('click', function(){
+  console.log(this)
+  console.log($(".card").attr('class'))
+  if ($(".card").hasClass("is-flipped")) { 
+    console.log("HIIIi")
+  }
 })
 
 

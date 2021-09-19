@@ -1,0 +1,12 @@
+{
+    "workbench.colorTheme": "Monokai Pro (Filter Ristretto)",
+    "workbench.preferredDarkColorTheme": "Monokai Pro (Filter Ristretto)",
+    "workbench.iconTheme": "Monokai Pro (Filter Ristretto) Icons",
+    "workbench.colorCustomizations": {
+        "activityBar.activeBorder": "#FF398D",
+        "activityBar.foreground": "#FFEAB5",
+        "activityBarBadge.foreground": "#FFFFFF",
+        "activityBarBadge.background": "#FF398D",
+        "dropdown.background": "#FF398D"
+    }
+}

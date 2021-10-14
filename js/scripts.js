@@ -69,11 +69,6 @@ for (let i = 0; i < 6; i++){
 // ------------ DON NOT DELETE 👆
 
 
-
-
-
-
-
 $(".front-div").each(function(i, e){
 
   let newImg = document.createElement('img')
@@ -83,7 +78,6 @@ $(".front-div").each(function(i, e){
 
   e.append(newImg)
 })
-
 
 
 // -- CARD FLIP 
@@ -96,70 +90,43 @@ $(".front-div").each(function(i, e){
 // let imgId = this.children[1].children[0].id
 // ------------------
 
+function flipCards() {
+  let matched = []
 
-// let matched = []
-// // getting two cards to match 
-// $(".card").on('click', function(e){
-//   if( matched.length < 2 ) matched.push(this)
-
-//   comparedMatch(matched)
-// })
-// // comparing the matches 
-
-// function comparedMatch(arr){
-//   arr.map(c => {
-//     let imgId = c.children[1].children[0].id
-//   })
-// }
-
-
-
-
-
-// $(".card").on('click', function(){
-
-//   if (matched.length < 2) {
-//     $(this).toggleClass("is-flipped");
-//     // console.log(this, ' :this')
-//     // console.log(this.lastElementChild.firstElementChild.id, ' :this is the ID to match')
-//     console.log($(".card").attr('class'), " :class attr")
-//     if ($(".card").hasClass("is-flipped")) { 
-//       matched.push($(this))
-//       // console.log(this.id, ' :this.id')
-//       // console.log(matched, " :matched")
-//     } 
-//   } else {
-//       $(this).removeClass(".is-flipped")
-//   }
-
-//   if (matched.length === 2) {
-//     console.log(matched[0])
-//   }
-// })
-
-let matched = []
-let check = setInterval(checkMatch, 1000) 
-function stopChecking() {
-  clearInterval(check)
-}
-
-// getting two cards on match array 
-$(".card").on('click', function(e){
-  if( matched.length < 2 ) matched.push(this)
-})
-
-function checkMatch(){
-  console.log(matched.length, ' matchissss')
-  if (matched.length === 2) stopChecking()
-}
-
-
-console.log(matched, ' matched matched')
-function comparedMatch(arr){
-  arr.map(c => {
-    let imgId = c.children[1].children[0].id
+  $('.card').on("click", function(){
+    matched.push(this.lastChild.firstChild.id)
+    $(this).toggleClass("is-flipped");
   })
-}  
+
+  let checkMatch = setInterval(function(evt) {
+      console.log(evt, this)
+    
+      for (let i = 0; i < 5; i++){
+        if (!$('.card').hasClass("is-flipped") && matched.length < 2) {
+          flipCards()
+        } else {
+          clearInterval(checkMatch)
+          return false
+        }
+      }
+    
+  }, 500)
+} 
+
+
+// function check() {
+//   let checkMatch = window.setInterval(flipCards, 1000)
+
+//   if (matched >= 2) {
+//     window.clearInterval(checkMatch)
+//   } else {
+//     return false
+//   }
+// }
+// check()
+
+
+
 
 
 

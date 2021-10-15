@@ -2,6 +2,13 @@ const images = ["one", "two", "three", "four", "five", "six", "seven"];
 const container = $("#container");
 
 let level, score, numberOfImages = 0;
+let level_container = document.querySelector('.level');
+let score_container = document.querySelector('.score')
+
+console.log(level_container.innerHTML, ' level_cint')
+console.log(score_container.innerHTML, ' score cont')
+// level_container.innerHTML = level.toString()
+// score_container.innerHTML = score.toString()
 
 for (let i = 0; i < 6; i++){
 
@@ -90,42 +97,50 @@ $(".front-div").each(function(i, e){
 // let imgId = this.children[1].children[0].id
 // ------------------
 
-function flipCards() {
-  let matched = []
+let matched = []
 
-  $('.card').on("click", function(){
-    matched.push(this.lastChild.firstChild.id)
-    $(this).toggleClass("is-flipped");
+const matchCards = () => {
+  // let matched = []
+
+  $(".card").on('click', function(e){
+    // $(this).toggleClass("is-flipped");
+
+    if (matched.length < 2) {
+      matched.push(this.lastChild.children[0].id)
+      $(this).toggleClass("is-flipped");
+    } 
   })
 
-  let checkMatch = setInterval(function(evt) {
-      console.log(evt, this)
-    
-      for (let i = 0; i < 5; i++){
-        if (!$('.card').hasClass("is-flipped") && matched.length < 2) {
-          flipCards()
-        } else {
-          clearInterval(checkMatch)
-          return false
-        }
-      }
-    
-  }, 500)
-} 
+  console.log(matched)
+  return matched
 
+}
 
-// function check() {
-//   let checkMatch = window.setInterval(flipCards, 1000)
+matchCards()
 
-//   if (matched >= 2) {
-//     window.clearInterval(checkMatch)
-//   } else {
-//     return false
-//   }
-// }
-// check()
+// -------- COMPARING THE CARDS 
 
+let isSame = false
 
+const compare = (arr) => {
+  if (arr[0] === arr[1] && matched.length == 2) {
+    console.log( "SAME, YOU WIN")
+    score++
+    score_container.innerHTML = score.toString();
+  } else {
+    console.log(" OH NO, TRY AGAIN")
+    clearInterval(checkMatched)
+    $().toggleClass("is-flipped")
+  }
+}
+
+// -------- REFRESHING THE PAGE TO GET THE MATCHED CARDS RETURNED
+let checkMatched = setInterval(function(){
+  if (matched.length == 2) {
+    console.log(matched)
+    compare(matched)
+  }
+}, 500)
 
 
 

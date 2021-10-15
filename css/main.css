@@ -21,7 +21,6 @@
   position: relative;
   transition: transform 1s;
   transform-style: preserve-3d;
-  z-index: 4;
 }
 
 .card__side {

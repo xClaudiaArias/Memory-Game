@@ -106,7 +106,7 @@ const matchCards = () => {
     // $(this).toggleClass("is-flipped");
 
     if (matched.length < 2) {
-      matched.push(this.lastChild.children[0].id)
+      matched.push(this)
       $(this).toggleClass("is-flipped");
     } 
   })
@@ -123,15 +123,23 @@ matchCards()
 let isSame = false
 
 const compare = (arr) => {
-  if (arr[0] === arr[1] && matched.length == 2) {
+  if (arr[0].lastChild.children[0].id === arr[1].lastChild.children[0].id && matched.length == 2) {
     console.log( "SAME, YOU WIN")
     score++
     score_container.innerHTML = score.toString();
   } else {
     console.log(" OH NO, TRY AGAIN")
     clearInterval(checkMatched)
-    $().toggleClass("is-flipped")
+
+    setTimeout(function(){
+      $(arr[0]).toggleClass("is-flipped")
+      $(arr[1]).toggleClass("is-flipped")
+    },1000)
   }
+
+  console.log(arr[0], arr[1], ' arr 0 and arr 1')
+  console.log(arr[0].lastChild.children[0].id, 'iiiiidddd')
+  console.log(arr[1].lastChild.children[0].id, 'iiiiidddd')
 }
 
 // -------- REFRESHING THE PAGE TO GET THE MATCHED CARDS RETURNED

@@ -1,14 +1,11 @@
 const images = ["one", "two", "three", "four", "five", "six", "seven"];
 const container = $("#container");
 
-let level, score, numberOfImages = 0;
 let level_container = document.querySelector('.level');
 let score_container = document.querySelector('.score')
 
-console.log(level_container.innerHTML, ' level_cint')
-console.log(score_container.innerHTML, ' score cont')
-// level_container.innerHTML = level.toString()
-// score_container.innerHTML = score.toString()
+let level = parseInt(level_container.innerHTML);
+let score = parseInt(score_container.innerHTML);
 
 for (let i = 0; i < 6; i++){
 
@@ -100,18 +97,15 @@ $(".front-div").each(function(i, e){
 let matched = []
 
 const matchCards = () => {
-  // let matched = []
 
   $(".card").on('click', function(e){
-    // $(this).toggleClass("is-flipped");
-
     if (matched.length < 2) {
       matched.push(this)
       $(this).toggleClass("is-flipped");
     } 
   })
 
-  console.log(matched)
+
   return matched
 
 }
@@ -125,27 +119,23 @@ let isSame = false
 const compare = (arr) => {
   if (arr[0].lastChild.children[0].id === arr[1].lastChild.children[0].id && matched.length == 2) {
     console.log( "SAME, YOU WIN")
-    score++
-    score_container.innerHTML = score.toString();
+    score++;
+    score_container.innerHTML = score + ""
+    $(arr[0]).addClass("is-flipped")
+    $(arr[1]).addClass("is-flipped")
+    matched = []
   } else {
-    console.log(" OH NO, TRY AGAIN")
-    clearInterval(checkMatched)
-
     setTimeout(function(){
       $(arr[0]).toggleClass("is-flipped")
       $(arr[1]).toggleClass("is-flipped")
     },1000)
+    matched = []
   }
-
-  console.log(arr[0], arr[1], ' arr 0 and arr 1')
-  console.log(arr[0].lastChild.children[0].id, 'iiiiidddd')
-  console.log(arr[1].lastChild.children[0].id, 'iiiiidddd')
 }
 
 // -------- REFRESHING THE PAGE TO GET THE MATCHED CARDS RETURNED
 let checkMatched = setInterval(function(){
   if (matched.length == 2) {
-    console.log(matched)
     compare(matched)
   }
 }, 500)

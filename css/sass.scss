@@ -6,6 +6,11 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    visibility: hidden;
+}
+
+#level, #score {
+    visibility: hidden;
 }
 
 .card-space {

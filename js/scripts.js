@@ -7,7 +7,7 @@ let score_container = document.querySelector('.score')
 let level = parseInt(level_container.innerHTML);
 let score = parseInt(score_container.innerHTML);
 
-const game = () => {
+const game = (lev, sco) => {
 
   for (let i = 0; i < 6; i++){
 
@@ -33,7 +33,6 @@ const game = () => {
     e.append(backDiv)
     e.append(frontDiv)
 
-
   })
 
   $(".card").removeClass("card-space");
@@ -42,7 +41,6 @@ const game = () => {
   $(".front-div").addClass("card__side")
   $(".back-div").addClass("card__side")
 
-  // ---------- DO NOT  DELETE  👇
 
   let selectedImages = [];
   let num = images.length;
@@ -71,10 +69,6 @@ const game = () => {
     lenSelected--;
   }
 
-
-  // ------------ DON NOT DELETE 👆
-
-
   $(".front-div").each(function(i, e){
 
     let newImg = document.createElement('img')
@@ -84,17 +78,6 @@ const game = () => {
 
     e.append(newImg)
   })
-
-
-  // -- CARD FLIP 
-
-  // $(".card").on('click', function(){
-  //   $(this).toggleClass("is-flipped");
-  // })
-  // ----------------
-  // ID ID D ID ID 👇
-  // let imgId = this.children[1].children[0].id
-  // ------------------
 
   let matched = []
 
@@ -149,7 +132,7 @@ $(start_btn).on('click', function(){
   $("#container").css('visibility', 'visible');
   $("#level").css('visibility', 'visible');
   $("#score").css('visibility', 'visible');
-  game()
+  game(level, score)
 })
 
 

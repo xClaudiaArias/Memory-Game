@@ -7,10 +7,15 @@ let score_container = document.querySelector('.score')
 let level = parseInt(level_container.innerHTML);
 let score = parseInt(score_container.innerHTML);
 
-const game = (lev, sco) => {
+let firstLev = 6
 
-  for (let i = 0; i < 6; i++){
+const game = () => {
 
+  $("#container").css('visibility', 'visible');
+  $("#level").css('visibility', 'visible');
+  $("#score").css('visibility', 'visible');
+
+  for (let i = 0; i < firstLev; i++){
     // parent element 
     let cardSpace = document.createElement("div")
     container.append(cardSpace)
@@ -124,15 +129,46 @@ const game = (lev, sco) => {
   }, 500)
 
 
+  // ---
+  // ---
+  // ---
+
+  check_score = setInterval(function(){
+// ---------
+    if (score === 3){
+      console.log("YES score is " + score)
+      level += 1
+      level_container.innerHTML = level
+      clearInterval(check_score)
+    } 
+  }, 500)
 }
+
+
+
+// START GAME BUTTON 👇
 
 let start_btn = document.querySelector('#start-game');
 
 $(start_btn).on('click', function(){
-  $("#container").css('visibility', 'visible');
-  $("#level").css('visibility', 'visible');
-  $("#score").css('visibility', 'visible');
   game(level, score)
 })
 
+
+// work on leveling up 
+
+// const levelUp = setInterval(function(){
+//   if (score === 3){
+//     console.log("LEVEL IS 22222")
+//     firstLev = 10
+//     clearInterval(levelUp)
+//   } else if (score === 5) {
+//     console.log("LEVEL IS 33333")
+//     firstLev = 14  
+//     clearInterval(levelUp)
+//   } else if (score ===)
+
+
+//   console.log(firstLev, ' i am first lev')
+// }, 500)
 

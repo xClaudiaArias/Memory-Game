@@ -14,6 +14,7 @@ let randomizedImages;
 
 const loadCards = (lev, ra) => {
   const images = ["one", "two", "three", "four", "five", "six", "seven"];
+
   for (let i = 0; i < lev; i++){
       // parent element 
       let cardSpace = document.createElement("div")
@@ -156,13 +157,9 @@ const game = () => {
 
   }, 500)
 
-  // return check_score
-
-
 }
-// kkw
-// START GAME BUTTON 👇
 
+// START GAME BUTTON 👇
 let start_btn = document.querySelector('#start-game');
 
 $(start_btn).on('click', function(){

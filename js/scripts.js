@@ -96,7 +96,6 @@ const loadCards = (lev, ra) => {
       } 
     })
 
-
     return matched
 
   }
@@ -130,6 +129,31 @@ const loadCards = (lev, ra) => {
 }
 
 
+function checkLevel() {
+  if (score === 3){
+    level = 2
+    level_container.innerHTML = level
+    firstLev = 10
+    rand = 5
+    // randomizedImages = []
+  }if (score === 3){
+    level = 2
+    level_container.innerHTML = level
+    firstLev = 10
+    rand = 5
+    // randomizedImages = []
+  } else if (score === 8){
+    level = 3
+    level_container.innerHTML = level
+    firstLev = 14
+    rand = 7
+    // randomizedImages = []
+  } else if (score === 15) {
+    clearInterval(levelUp)
+  }
+}
+
+
 const game = () => {
   // const images = ["one", "two", "three", "four", "five", "six", "seven"];
   $("#container").css('visibility', 'visible');
@@ -140,23 +164,7 @@ const game = () => {
   loadCards(firstLev, rand)
 
   // leveling up based on score 
-  check_score = setInterval(function(){
-    if (score === 3){
-      level = 2
-      level_container.innerHTML = level
-      firstLev = 10
-      rand = 5
-      randomizedImages = []
-      setTimeout(function() { 
-        $("#container").empty();
-        loadCards(firstLev, rand)
-        return [firstLev, rand];
-      }, 2000);
-      clearInterval(check_score)
-    } 
-
-  }, 500)
-
+  levelUp = setInterval(checkLevel, 500)
 }
 
 // START GAME BUTTON 👇
@@ -167,6 +175,47 @@ $(start_btn).on('click', function(){
   $(this).prop("disabled",true);
 })
 
+const lev_up = () => {
+  
+  let tilt = function (){
+    container.empty()
+    console.log("whaaaat")
+
+  }
 
 
+  function testing(){
 
+    console.log(firstLev, rand, " firstLev, rand")
+    let myTimeout = setTimeout(tilt, 300)
+    // clearInterval(ll)
+  }
+
+  // NOTES :
+    // change the entire set interval so hat it can be called again and again 
+
+  let ll = setInterval(function(){
+    if (level === 2) {
+      myTimeout = setTimeout(tilt, 300)
+      clearInterval(ll)
+      testing()
+    } else if (level === 3) {
+      // console.log(firstLev, rand, " firstLev, rand")
+      // clearInterval(ll)
+      testing()
+      clearInterval(ll)
+    }
+  }, 500)
+
+  let empty = setInterval(function(){
+    if (level === 2 && container.is(':empty')){
+      console.log("container is empty")
+      game()
+      clearInterval(empty)
+    } else {
+      console.log("dun dun")
+    }
+  }, 1000)
+}
+
+lev_up()
